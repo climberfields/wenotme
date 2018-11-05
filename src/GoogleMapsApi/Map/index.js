@@ -12,12 +12,11 @@ class Mapcontainer extends Component {
     <div style={{width: '30%', height: '5%', position: 'relative'}}>
         <h1>input</h1>
             </div>
-            </Infowindow>
 
         )
     }
 }
 
-exportexport default GoogleApiWrapper({
+export default GoogleApiWrapper({
      apiKey: ('AIzaSyAbrSHi6Kh4l_JpyMZjbjT0PB5WllFG8CI')
  })(Mapcontainer)
