@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class Title extend Component{
+class Title extends Component{
     render(){
-        return (
+        return ( <h1>This is Title</h1>
         
         
         
-        )
+        );
     }
 }
 
