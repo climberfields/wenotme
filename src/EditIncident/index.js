@@ -12,7 +12,7 @@ const EditIncident = (props) => {
           <Label>
             Edit Incident Title:
           </Label>
-          <Form.Input type='text' name='title' value={props.IncidentToEdit.title} onChange={props.handleEditChange}/>
+          <Form.Input type='text' name='title' value={props.incidentToEdit.title} onChange={props.handleEditChange}/>
           <Label>
             Edit Incident Description:
           </Label>

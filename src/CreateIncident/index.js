@@ -17,8 +17,8 @@ class CreateIncident extends Component {
     return (
       <Segment>
         <h4>Create Incident</h4>
-        <Form onSubmit={this.props.addMovie.bind(null, this.state)}>
-          <Label>Movie:</Label>
+        <Form onSubmit={this.props.addIncident.bind(null, this.state)}>
+          <Label>Incident:</Label>
           <Form.Input type='text' name='title' value={this.state.title} onChange={this.updateIncident}/>
           <Label>description:</Label>
           <Form.Input type='text' name='description' value={this.state.description} onChange={this.updateIncident}/>
