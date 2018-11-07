@@ -53,12 +53,12 @@ class IncidentContainer extends Component {
 
       // we have to turn the response from express into
       // an object we can use
-      const parsedResponse = await createdMovie.json();
+      const parsedResponse = await createdIncident.json();
       console.log(parsedResponse, ' this is response')
       // we are emptying all the movies that are living in state into a new array,
       // and then adding the movie we just created to the end of it
       // the newMovie is called parsedResponse.data
-      this.setState({movies: [...this.state.movies, parsedResponse.data]})
+      this.setState({Incident: [...this.state.Incident, parsedResponse.data]})
 
 
     } catch(err){
@@ -70,30 +70,30 @@ class IncidentContainer extends Component {
     // headers: {'Content-Type': 'application/json'}
     // becuase after we create it, we want to add it to the movies array
   }
-  deleteMovie = async (id) => {
+  deleteIncident = async (id) => {
 
 
-    const deleteMovieResponse = await fetch('http://localhost:9000/api/v1/movies/' + id, {
+    const deleteIncidentResponse = await fetch('http://localhost:9000/api/v1/Incident/' + id, {
                                               method: 'DELETE'
                                             });
 
     // This is the parsed response from express
-    const deleteMovieParsed = await deleteMovieResponse.json();
+    const deleteIncidentParsed = await deleteIncidentResponse.json();
 
 
 
 
     // Now that the db has deleted our item, we need to remove it from state
-    this.setState({movies: this.state.movies.filter((movie) => movie._id !== id )})
+    this.setState({Incident: this.state.Incident.filter((Incident) => Incident._id !== id )})
 
-    console.log(deleteMovieParsed, ' response from express server')
+    console.log(deleteIncidentParsed, ' response from express server')
       // Then make the delete request, then remove the movie from the state array using filter
   }
   handleEditChange = (e) => {
 
     this.setState({
-      movieToEdit: {
-        ...this.state.movieToEdit,
+      IncidentToEdit: {
+        ...this.state.IncidentToEdit,
         [e.currentTarget.name]: e.currentTarget.value
       }
     });
@@ -111,11 +111,11 @@ class IncidentContainer extends Component {
     // then update state
     try {
 
-      const editResponse = await fetch('http://localhost:9000/api/v1/movies/' + this.state.movieToEdit._id, {
+      const editResponse = await fetch('http://localhost:9000/api/v1/Incident/' + this.state.IncidentToEdit._id, {
         method: 'PUT',
         body: JSON.stringify({
-          title: this.state.movieToEdit.title,
-          description: this.state.movieToEdit.description
+          title: this.state.IncidentToEdit.title,
+          description: this.state.IncidentToEdit.description
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -124,18 +124,18 @@ class IncidentContainer extends Component {
 
       const editResponseParsed = await editResponse.json();
 
-      const newMovieArrayWithEdit = this.state.movies.map((movie) => {
+      const newIncidentArrayWithEdit = this.state.movies.map((movie) => {
 
-        if(movie._id === editResponseParsed.data._id){
+        if(Incident._id === editResponseParsed.data._id){
           movie = editResponseParsed.data
         }
 
-        return movie
+        return Incident
       });
 
       this.setState({
         showEditModal: false,
-        movies: newMovieArrayWithEdit
+        Incident: newIncidentArrayWithEdit
       });
 
       console.log(editResponseParsed, ' parsed edit')
@@ -150,14 +150,14 @@ class IncidentContainer extends Component {
     // If you feel up to make the modal (EditMovie Component) and show at the appropiate times
 
   }
-  openAndEdit = (movieFromTheList) => {
-    console.log(movieFromTheList, ' movieToEdit  ');
+  openAndEdit = (IncidentFromTheList) => {
+    console.log(IncidentFromTheList, ' IncidentToEdit  ');
 
 
     this.setState({
       showEditModal: true,
-      movieToEdit: {
-        ...movieFromTheList
+      IncidentToEdit: {
+        ...IncidentFromTheList
       }
     })
 
@@ -172,17 +172,17 @@ class IncidentContainer extends Component {
       <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
         <Grid.Row>
           <Grid.Column>
-            <CreateMovie addMovie={this.addMovie}/>
+            <CreateIncident addIncident={this.addIncident}/>
           </Grid.Column>
 
           <Grid.Column>
-            <MovieList movies={this.state.movies} deleteMovie={this.deleteMovie} openAndEdit={this.openAndEdit}/>
+            <MovieList movies={this.state.Incident} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
           </Grid.Column>
-          <EditMovie open={this.state.showEditModal} movieToEdit={this.state.movieToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
+          <EditIncident open={this.state.showEditModal} IncidentToEdit={this.state.IncidentToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
         </Grid.Row>
       </Grid>
       )
   }
 }
 
-export default MovieContainer;
+export default IncidentContainer;
