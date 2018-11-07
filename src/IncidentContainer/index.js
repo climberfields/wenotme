@@ -18,7 +18,7 @@ class IncidentContainer extends Component {
       showEditModal: false
     }
   }
-  getIncident = async () => {
+  getIncidents = async () => {
     // Where We will make our fetch call to get all the movies
     const incidents = await fetch('http://localhost:9000/api/v1/incidents');
     const incidentsParsedJSON = await incidents.json();
@@ -124,18 +124,18 @@ class IncidentContainer extends Component {
 
       const editResponseParsed = await editResponse.json();
 
-      const newIncidentArrayWithEdit = this.state.Incidents.map((Incidents) => {
+      const newIncidentArrayWithEdit = this.state.incidents.map((incident) => {
 
-        if(Incidents._id === editResponseParsed.data._id){
-          Incidents = editResponseParsed.data
+        if(incident._id === editResponseParsed.data._id){
+          incident = editResponseParsed.data
         }
 
-        return Incidents
+        return incident
       });
 
       this.setState({
         showEditModal: false,
-        Incident: newIncidentArrayWithEdit
+        incident: newIncidentArrayWithEdit
       });
 
       console.log(editResponseParsed, ' parsed edit')
@@ -178,7 +178,7 @@ class IncidentContainer extends Component {
           <Grid.Column>
             <IncidentList incidents={this.state.incidents} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
           </Grid.Column>
-          <EditIncident open={this.state.showEditModal} IncidentToEdit={this.state.IncidentToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
+          <EditIncident open={this.state.showEditModal} incidentToEdit={this.state.incidentToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
         </Grid.Row>
       </Grid>
       )

@@ -9,7 +9,7 @@ const HeaderApp = () => {
     <Header>
       <ul>
         <li><Link to="/">Login</Link></li>
-        <li><Link to="/incident">Incident</Link></li>
+        <li><Link to="/incidents">Incident</Link></li>
       </ul>
     </Header>
     )
