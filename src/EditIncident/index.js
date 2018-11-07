@@ -16,7 +16,7 @@ const EditIncident = (props) => {
           <Label>
             Edit Incident Description:
           </Label>
-          <Form.Input type='text' name='description' value={props.IncidentToEdit.description} onChange={props.handleEditChange}/>
+          <Form.Input type='text' name='description' value={props.incidentToEdit.description} onChange={props.handleEditChange}/>
 
           <Modal.Actions>
             <Button color='green' type='submit'>Edit Incident</Button>

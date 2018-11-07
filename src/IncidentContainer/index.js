@@ -20,32 +20,32 @@ class IncidentContainer extends Component {
   }
   getIncident = async () => {
     // Where We will make our fetch call to get all the movies
-    const incident = await fetch('http://localhost:9000/api/v1/incident');
-    const incidentParsedJSON = await incident.json();
-    return incidentParsedJSON
+    const incidents = await fetch('http://localhost:9000/api/v1/incidents');
+    const incidentsParsedJSON = await incidents.json();
+    return incidentsParsedJSON
   }
   componentDidMount(){
     // get ALl the movies, on the intial load of the APP
-    this.getIncident().then((incident) => {
-      this.setState({incident: incident.data})
+    this.getIncidents().then((incidents) => {
+      this.setState({incidents: incidents.data})
     }).catch((err) => {
       console.log(err);
     })
     /// Where you call this.getMovies
   }
-  addIncident = async (Incident, e) => {
+  addIncident = async (incident, e) => {
     // .bind arguments take presidence over every other argument
     e.preventDefault();
-    console.log(Incident);
+    console.log(incident);
 
     try {
 
       // We have to send JSON
       // createdMovie variable will store the response from the express API
-      const createdIncident = await fetch('http://localhost:9000/api/v1/incident', {
+      const createdIncident = await fetch('http://localhost:9000/api/v1/incidents', {
         method: 'POST',
         credentials: 'include',
-        body: JSON.stringify(Incident),
+        body: JSON.stringify(incident),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -58,7 +58,7 @@ class IncidentContainer extends Component {
       // we are emptying all the movies that are living in state into a new array,
       // and then adding the movie we just created to the end of it
       // the newMovie is called parsedResponse.data
-      this.setState({Incident: [...this.state.Incident, parsedResponse.data]})
+      this.setState({incidents: [...this.state.incidents, parsedResponse.data]})
 
 
     } catch(err){
@@ -73,7 +73,7 @@ class IncidentContainer extends Component {
   deleteIncident = async (id) => {
 
 
-    const deleteIncidentResponse = await fetch('http://localhost:9000/api/v1/Incident/' + id, {
+    const deleteIncidentResponse = await fetch('http://localhost:9000/api/v1/incidents/' + id, {
                                               method: 'DELETE'
                                             });
 
@@ -84,7 +84,7 @@ class IncidentContainer extends Component {
 
 
     // Now that the db has deleted our item, we need to remove it from state
-    this.setState({Incident: this.state.Incident.filter((Incident) => Incident._id !== id )})
+    this.setState({incidents: this.state.incidents.filter((incident) => incident._id !== id )})
 
     console.log(deleteIncidentParsed, ' response from express server')
       // Then make the delete request, then remove the movie from the state array using filter
@@ -92,8 +92,8 @@ class IncidentContainer extends Component {
   handleEditChange = (e) => {
 
     this.setState({
-      IncidentToEdit: {
-        ...this.state.IncidentToEdit,
+      incidentToEdit: {
+        ...this.state.incidentToEdit,
         [e.currentTarget.name]: e.currentTarget.value
       }
     });
@@ -111,11 +111,11 @@ class IncidentContainer extends Component {
     // then update state
     try {
 
-      const editResponse = await fetch('http://localhost:9000/api/v1/Incident/' + this.state.IncidentToEdit._id, {
+      const editResponse = await fetch('http://localhost:9000/api/v1/incidents/' + this.state.incidentToEdit._id, {
         method: 'PUT',
         body: JSON.stringify({
-          title: this.state.IncidentToEdit.title,
-          description: this.state.IncidentToEdit.description
+          title: this.state.incidentToEdit.title,
+          description: this.state.incidentToEdit.description
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -150,14 +150,14 @@ class IncidentContainer extends Component {
     // If you feel up to make the modal (EditMovie Component) and show at the appropiate times
 
   }
-  openAndEdit = (IncidentFromTheList) => {
-    console.log(IncidentFromTheList, ' IncidentToEdit  ');
+  openAndEdit = (incidentFromTheList) => {
+    console.log(incidentFromTheList, ' incidentToEdit  ');
 
 
     this.setState({
       showEditModal: true,
-      IncidentToEdit: {
-        ...IncidentFromTheList
+      incidentToEdit: {
+        ...incidentFromTheList
       }
     })
 
@@ -176,7 +176,7 @@ class IncidentContainer extends Component {
           </Grid.Column>
 
           <Grid.Column>
-            <IncidentList Incident={this.state.Incident} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
+            <IncidentList incidents={this.state.incidents} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
           </Grid.Column>
           <EditIncident open={this.state.showEditModal} IncidentToEdit={this.state.IncidentToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
         </Grid.Row>
