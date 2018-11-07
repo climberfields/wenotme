@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Label, Segment } from 'semantic-ui-react';
 
-class CreateMovie extends Component {
+class CreateIncident extends Component {
   constructor(){
     super();
 

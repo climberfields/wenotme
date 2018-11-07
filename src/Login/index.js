@@ -33,7 +33,7 @@ class Login extends Component {
       // change our component
       console.log('succes login')
       // this automatically get passed to your component as a prop
-      this.props.history.push('/movies');
+      this.props.history.push('/Incident');
     }
   }
   render(){

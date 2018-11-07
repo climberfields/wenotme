@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CreateMovie from '../CreateMovie';
-import MovieList from '../MovieList';
-import EditMovie from '../EditMovie';
+import CreateIncident from '../CreateIncident';
+import IncidentList from '../IncidentList';
+import EditIncident from '../EditIncident';
 import { Grid } from 'semantic-ui-react';
 
 class IncidentContainer extends Component {
@@ -9,8 +9,8 @@ class IncidentContainer extends Component {
     super();
 
     this.state = {
-      movies: [],
-      movieToEdit: {
+      incidents: [],
+      incidentToEdit: {
         title: '',
         description: '',
         _id: ''
@@ -21,22 +21,22 @@ class IncidentContainer extends Component {
   getIncident = async () => {
     // Where We will make our fetch call to get all the movies
     const incident = await fetch('http://localhost:9000/api/v1/incident');
-    const incidentParsedJSON = await movies.json();
+    const incidentParsedJSON = await incident.json();
     return incidentParsedJSON
   }
   componentDidMount(){
     // get ALl the movies, on the intial load of the APP
-    this.getIncident().then((movies) => {
+    this.getIncident().then((incident) => {
       this.setState({incident: incident.data})
     }).catch((err) => {
       console.log(err);
     })
     /// Where you call this.getMovies
   }
-  addMovie = async (movie, e) => {
+  addIncident = async (Incident, e) => {
     // .bind arguments take presidence over every other argument
     e.preventDefault();
-    console.log(incident);
+    console.log(Incident);
 
     try {
 
@@ -45,7 +45,7 @@ class IncidentContainer extends Component {
       const createdIncident = await fetch('http://localhost:9000/api/v1/incident', {
         method: 'POST',
         credentials: 'include',
-        body: JSON.stringify(incident),
+        body: JSON.stringify(Incident),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -124,13 +124,13 @@ class IncidentContainer extends Component {
 
       const editResponseParsed = await editResponse.json();
 
-      const newIncidentArrayWithEdit = this.state.movies.map((movie) => {
+      const newIncidentArrayWithEdit = this.state.Incidents.map((Incidents) => {
 
-        if(Incident._id === editResponseParsed.data._id){
-          movie = editResponseParsed.data
+        if(Incidents._id === editResponseParsed.data._id){
+          Incidents = editResponseParsed.data
         }
 
-        return Incident
+        return Incidents
       });
 
       this.setState({
@@ -176,7 +176,7 @@ class IncidentContainer extends Component {
           </Grid.Column>
 
           <Grid.Column>
-            <MovieList movies={this.state.Incident} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
+            <IncidentList Incident={this.state.Incident} deleteIncident={this.deleteIncident} openAndEdit={this.openAndEdit}/>
           </Grid.Column>
           <EditIncident open={this.state.showEditModal} IncidentToEdit={this.state.IncidentToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
         </Grid.Row>

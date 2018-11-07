@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import incidentContainer from './MovieContainer';
+import IncidentContainer from './IncidentContainer';
 import Login from './Login';
 import Header from './Header';
 import { Route, Switch } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 const My404 = () => {
   return (
     <div>
-      You're lost, will you even be found?
+      Youre lost, will you even be found?
     </div>
     )
 }
