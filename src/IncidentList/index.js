@@ -9,10 +9,10 @@ const Incidents = (props) => {
         <Card.Content>
           <Card.Header>{incident.title}</Card.Header>
           <Card.Description>{incident.description}</Card.Description>
+          <Card.Description>{incident.location}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <Button color="green" onClick={props.openAndEdit.bind(null, incident)}>Edit Incident</Button>
-          <Button color="red" onClick={props.deleteIncident.bind(null, incident._id)}>Delete Incident</Button>
           <Button color="red" onClick={props.deleteIncident.bind(null, incident._id)}>Delete Incident</Button>
         </Card.Content>
       </Card>

@@ -20,12 +20,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        
         <Switch>
           <Route exact path="/" component={Login}/>
           <Route exact path="/incidents" component={IncidentContainer}/>
           <Route component={My404}/>
-        
         </Switch>
+        
         <div className="MapContainer">
         <MapContainer />
         </div>
