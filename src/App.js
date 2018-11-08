@@ -4,11 +4,12 @@ import IncidentContainer from './IncidentContainer';
 import Login from './Login';
 import Header from './Header';
 import { Route, Switch } from 'react-router-dom';
+import MapContainer from './MapContainer';
 
 const My404 = () => {
   return (
     <div>
-      Youre lost, will you even be found?
+      You're lost, will you even be found?
     </div>
     )
 }
@@ -21,8 +22,12 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Login}/>
-          <Route exact path="/incident" component={IncidentContainer}/>
+          <Route exact path="/incidents" component={IncidentContainer}/>
           <Route component={My404}/>
+        <div className="MapContainer">
+        <MapContainer />
+        
+        </div>
         </Switch>
       </div>
     );

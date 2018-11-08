@@ -20,7 +20,7 @@ class IncidentContainer extends Component {
   }
   getIncidents = async () => {
     // Where We will make our fetch call to get all the movies
-    const incidents = await fetch('http://localhost:9000/api/v1/incidents');
+    const incidents = await fetch('http://localhost:9000/api/v1/incident');
     const incidentsParsedJSON = await incidents.json();
     return incidentsParsedJSON
   }
@@ -42,7 +42,7 @@ class IncidentContainer extends Component {
 
       // We have to send JSON
       // createdMovie variable will store the response from the express API
-      const createdIncident = await fetch('http://localhost:9000/api/v1/incidents', {
+      const createdIncident = await fetch('http://localhost:9000/api/v1/incident', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(incident),
@@ -73,7 +73,7 @@ class IncidentContainer extends Component {
   deleteIncident = async (id) => {
 
 
-    const deleteIncidentResponse = await fetch('http://localhost:9000/api/v1/incidents/' + id, {
+    const deleteIncidentResponse = await fetch('http://localhost:9000/api/v1/incident/' + id, {
                                               method: 'DELETE'
                                             });
 
@@ -111,7 +111,7 @@ class IncidentContainer extends Component {
     // then update state
     try {
 
-      const editResponse = await fetch('http://localhost:9000/api/v1/incidents/' + this.state.incidentToEdit._id, {
+      const editResponse = await fetch('http://localhost:9000/api/v1/incident/' + this.state.incidentToEdit._id, {
         method: 'PUT',
         body: JSON.stringify({
           title: this.state.incidentToEdit.title,
