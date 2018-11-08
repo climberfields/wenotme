@@ -22,7 +22,7 @@ class CreateIncident extends Component {
           <Form.Input type='text' name='title' value={this.state.title} onChange={this.updateIncident}/>
           <Label>description:</Label>
           <Form.Input type='text' name='description' value={this.state.description} onChange={this.updateIncident}/>
-          <Button color="green" type='Submit'>Create Incident</Button>
+          <Button color="green" type='Submit'>Create Incident</Button>  
         </Form>
       </Segment>
       )

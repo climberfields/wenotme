@@ -1,45 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wenotme
 
-## Available Scripts
+## What's the story?
 
-In the project directory, you can run:
+Project Wenotme is an application that will allow you to track and post incidents as they occur. You will be able to retrieve live data from your police department that let's you know what crimes have been committed, where, and when. 
 
-### `npm start`
+## Phase 1
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In phase 1 we are capturing the ability to see what crimes occured, when and where. You also have the ability to take a picture of a crime in progress and upload the picture so that it will aid citizens in protecting their neighborhoods and potentially assist police in their investigations. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Phase 2
 
-### `npm test`
+Phase 2 will bring about a fully integrated chat application. This chat feature will allow you to find users in your area. This will aid you in traveling distances that are too short to drive, but long enough for something to happen. Phase 2 will also bring about alert notifications based on your location and current time to let you know what if any are prominent crimes.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### WireFrames
 
-### `npm run build`
+Home Page Wireframe : https://wireframe.cc/z0faqy
+Incidents page Wireframe: https://wireframe.cc/BAT4yT
+Chat Page Wireframe: https://wireframe.cc/kmAyFw
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies Used 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+"body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.3.9"
+    MongoD
+      "ajv": "^6.5.5",
+    "google-maps-react": "^2.0.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "semantic-ui": "^2.4.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.83.0"
 # wenotme
