@@ -24,11 +24,11 @@ class App extends Component {
           <Route exact path="/" component={Login}/>
           <Route exact path="/incidents" component={IncidentContainer}/>
           <Route component={My404}/>
+        
+        </Switch>
         <div className="MapContainer">
         <MapContainer />
-        
         </div>
-        </Switch>
       </div>
     );
   }
