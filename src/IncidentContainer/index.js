@@ -99,11 +99,7 @@ class IncidentContainer extends Component {
     });
 
 
-    // movieToEdit: {
-    //   _id: this.state.movieToEdit._id,
-    //   title: this.state.movieToEdit.title,
-    //   description: this.state.movieToEdit.description
-    // }
+   
   }
   closeAndEdit = async (e) => {
     // Put request,
@@ -161,10 +157,7 @@ class IncidentContainer extends Component {
       }
     })
 
-    // movieToEdit = {
-    //   title: movieFromTheList.title,
-    //   description: movieFromTheList.description
-    // }
+   
   }
   render(){
     console.log(this.state)

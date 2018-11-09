@@ -5,11 +5,12 @@ import Login from './Login';
 import Header from './Header';
 import { Route, Switch } from 'react-router-dom';
 import MapContainer from './MapContainer';
+import About from './About';
 
 const My404 = () => {
   return (
     <div>
-      You're lost, will you even be found?
+      Yo homie this isn't the page you're looking for.
     </div>
     )
 }
@@ -29,6 +30,7 @@ class App extends Component {
         
         <div className="MapContainer">
         <MapContainer />
+        <About />
         </div>
       </div>
     );

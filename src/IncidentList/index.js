@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button} from 'semantic-ui-react';
+import { Card, Button, Font} from 'semantic-ui-react';
 // Pure Function, takes an input and renders ui
 const Incidents = (props) => {
   // you'll propably have to map over the movies and create your list items here
@@ -9,10 +9,10 @@ const Incidents = (props) => {
         <Card.Content>
           <Card.Header>{incident.title}</Card.Header>
           <Card.Description>{incident.description}</Card.Description>
-          <Card.Description>{incident.location}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <Button color="green" onClick={props.openAndEdit.bind(null, incident)}>Edit Incident</Button>
+          <Button color="red" onClick={props.deleteIncident.bind(null, incident._id)}>Delete Incident</Button>
           <Button color="red" onClick={props.deleteIncident.bind(null, incident._id)}>Delete Incident</Button>
         </Card.Content>
       </Card>

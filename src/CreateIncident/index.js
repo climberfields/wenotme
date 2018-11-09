@@ -17,17 +17,21 @@ class CreateIncident extends Component {
   render(){
     return (
       <Segment>
+        <div class="ui form">
         <h4>Create Incident</h4>
         <Form onSubmit={this.props.addIncident.bind(null, this.state)}>
           <Label>Incident:</Label>
           <Form.Input type='text' name='title' value={this.state.title} onChange={this.updateIncident}/>
+          <div class="field">
           <Label>description:</Label>
           <Form.Input type='text' name='description' value={this.state.description} onChange={this.updateIncident}/>
+         </div>
           <Label>location:</Label>
           <Form.Input type='text' name='location' value={this.state.location} onChange={this.updateIncident}/>
           
     <Button color="green" type='Submit'>Create Incident</Button>  
         </Form>
+    </div>
       </Segment>
       )
   }
